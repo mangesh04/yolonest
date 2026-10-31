@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@import "@photo-sphere-viewer/core/index.css";
+
+/* Brand colours from the flyers. Change here and the whole site updates. */
+@theme {
+  --color-navy: #1c1f4a;
+  --color-gold: #e3a72f;
+  --font-sans: "Poppins", sans-serif;
+}

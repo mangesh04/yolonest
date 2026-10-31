@@ -1,0 +1,52 @@
+YOLO NEST DEMO - IMAGES AND SETUP
+=================================
+
+RUN IT
+  npm install
+  npm run dev
+Open the local link it prints. Deploy later with: npm run build (upload the dist folder).
+
+DEMO LOGINS (Log in page, pick the role tab first)
+  guest  : guest@yolonest.com / guest123
+  admin  : admin@yolonest.com / admin123
+  staff  : staff@yolonest.com / staff123
+
+IMAGES
+Put files exactly at these paths. Any file you have not added yet shows a
+placeholder box that prints the path it is waiting for.
+
+public/images/hero/            (landscape, about 1600x900, jpg)
+  hero-1.jpg     Front of the building or best common area. Slide 1.
+  hero-2.jpg     Gym, gaming zone or pickleball court. Slide 2.
+  hero-3.jpg     Cafe area or a furnished room. Slide 3.
+  side-card.jpg  Small card beside the slider (about 600x400).
+
+public/images/categories/      (about 800x600, jpg)
+  monthly-pg.jpg   daily-pg.jpg   flat-1bhk.jpg   lodge.jpg   airbnb.jpg
+
+public/images/rooms/           (about 800x600, jpg)
+  One photo per room. File name = room id from src/data/site.js
+  pg-101.jpg  pg-102.jpg  dpg-201.jpg  flat-301.jpg  lodge-401.jpg  stay-501.jpg
+
+public/images/360/             (equirectangular 2:1, about 4096x2048, jpg)
+  Same names as the room photos: pg-101.jpg, pg-102.jpg, and so on.
+  How to shoot: Google Street View app (photo sphere), a 360 camera
+  (Insta360, Ricoh Theta), or your phone's panorama mode. The image must be
+  a full 360 sphere or the view will look stretched.
+
+Keep each photo under about 400 KB (360 photos under 1.5 MB). Compress with
+squoosh.app so the page loads fast on mobile data.
+
+HOW TO EDIT
+  src/data/site.js         phone, address, amenities text, categories, rooms,
+                           prices, map search text. Add a room = add one line,
+                           then add its two photos.
+  src/data/mock.js         demo logins, guests, expenses, bed layout.
+  src/index.css            brand colours (navy and gold) and font.
+  src/components/          one file per section: Hero, Amenities, MapSection,
+                           Stays, RoomViewer, Footer, Navbar, GuestTable.
+  src/pages/               Home, Login, Guest/Admin/Staff dashboards.
+
+NOT BUILT YET (next phase)
+  Real login and database, payments (Razorpay/Cashfree), WhatsApp messages,
+  mobile menu, booking calendar. The dashboards use fake data from mock.js.
