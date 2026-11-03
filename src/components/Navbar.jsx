@@ -2,7 +2,8 @@ const links = [['Amenities', 'amenities'], ['Stays', 'stays'], ['Location', 'loc
 
 export default function Navbar({ user, go, scrollTo, logout }) {
   return (
-    <header className="sticky top-0 z-40 bg-navy text-white shadow">
+    <header className="sticky top-0 z-40 bg-navy text-white shadow-xl">
+
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <button onClick={() => go('home')} className="text-xl font-extrabold">
           YOLO <span className="text-gold">nest</span>

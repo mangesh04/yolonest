@@ -6,11 +6,8 @@ import { brand } from '../data/site'
 // Replace the image paths and text with your real amenities.
 const amenities = [
   { title: 'Gym', info: 'Fully equipped gym open all day for residents.', src: '/images/hero/gym.webp' },
-
   { title: 'Gaming Zone', info: 'Console and board games to unwind after work.', src: '/images/hero/gaming.webp' },
-
   { title: 'Pickleball Court', info: 'Play with housemates on our own court.', src: '/images/hero/pickleball.webp' },
-
   { title: 'Café Area', info: 'A cosy space to work, chat or grab a coffee.', src: '/images/hero/cafe.webp' },
 ]
 
@@ -18,14 +15,52 @@ export default function Hero({ scrollTo }) {
   const [active, setActive] = useState(null) // null = all equal
 
   return (
-    <section id="home" className="flex flex-1 flex-col justify-center bg-navy text-white">
-      <div className="mx-auto grid w-full max-w-6xl gap-4 px-4 py-6 md:py-8 lg:grid-cols-3">
+    <section id="home" className="relative flex flex-1 flex-col justify-center overflow-hidden bg-navy text-white">
+      {/* Background image + overlays: behind everything */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        {/* the image */}
+        <img
+          src="/images/hero/bg.webp"
+          alt=""
+          loading="eager"
+          decoding="async"
+          className="h-full w-full object-cover object-center "
+        />
+
+        {/* navy tint: image still visible, right side more solid behind the map */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(90deg, rgba(14,16,56,.95) 0%, rgba(14,16,56,.75) 40%, rgba(14,16,56,.86) 70%, rgba(14,16,56,.92) 100%)',
+          }}
+        />
+
+        {/* single soft glow, top-left only */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(55% 50% at 8% 0%, rgba(99,102,241,.3), transparent 70%)',
+          }}
+        />
+
+        {/* fade into the section below */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy to-transparent" />
+      </div>
+
+      {/* Content: relative so it stays above the background */}
+      <div className="relative mx-auto grid w-full max-w-6xl gap-4 px-4 py-6 md:py-8 lg:grid-cols-3">
         {/* Left: heading + expanding amenity panels */}
         <div className="flex min-w-0 flex-col gap-4 lg:col-span-2">
           <div>
             <h1 className="text-3xl font-extrabold leading-tight sm:text-4xl md:text-5xl">
-              Lavish stay, without any restrictions
+              Premium co-living,
+              <span className="block text-gold">built around your lifestyle</span>
             </h1>
+            <p className="mt-2 max-w-xl text-sm text-white/80 sm:text-base">
+              A fully furnished PG with a gym, gaming zone, pickleball court and café,
+              close to Hinjewadi's IT parks and the metro.
+            </p>
             <p className="mt-1 font-medium text-gold">{brand.tagline}</p>
             <button
               onClick={() => scrollTo('stays')}
@@ -78,8 +113,8 @@ export default function Hero({ scrollTo }) {
           </div>
         </div>
 
-        {/* Right: animated nearby map */}
-        <NearbyMap />
+        {/* Right: places chips card + map card */}
+        {/* <NearbyMap /> */}
       </div>
     </section>
   )
